@@ -1,32 +1,52 @@
 <script>
-	import Nav from '$lib/components/Nav.svelte';
-	import NavTest from '$lib/components/NavTest.svelte';
-	import Sidebar from '$lib/components/core/Sidebar.svelte';
-	import TaskCard from '$lib/components/core/TaskCard.svelte';
-	import TaskList from '$lib/components/core/TaskList.svelte';
+	import Task from '$lib/components/Task.svelte';
+	import Box from '$lib/components/core/Box.svelte';
+	import Button from '$lib/components/core/Button.svelte';
 
+    let tgl = new Date().toDateString();
 </script>
-<style>
-		.container1{
-			display: flex;
-			flex-direction: row;
-			justify-content: space-around;
-			/* border: solid; */
-			border-radius: 1%;
-			justify-self: center;
-			margin: auto;
-			width: 90%;
-			background-color: #515173;
-			padding: 1%;
-		}
-</style>
 
-<h1 style="text-align: center; margin: 2%;">HACER</h1>
-
-<div class="container1">
-	<Sidebar></Sidebar>
-	<TaskList>
-	</TaskList>
-</div>
+<Box>
+    <div style="margin: 0vw 20vw 0vw 20vw;">
+        <div style="padding: 1.15vw 0 1.15vw 0;">
+            <a style="font-size: 1vw;" href="/dashboard">HACER!</a>
+        </div>
+    </div>
+</Box>
+<Box>
+    <div style="display: flex; flex-direction: row;">
+        <Box>
+            <div style="display: flex; flex-direction: column;">
+                <Button width="10vw" href='/dashboard' alias='Home'></Button>
+                <Button width="10vw" href='/#' alias='Profile'></Button>
+            </div>
+        </Box>
+        <Box>
+            <div style="display: flex; flex-direction: column;">
+                <Box>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <p style="margin: 0; font-size: 1vw;">Today schedules</p>
+                        <div style="padding-right: 34vw;"></div>
+                        <Button alias="filter" href="#"></Button>
+                    </div>
+                </Box>
+                <div style="display: flex; padding-top: 1vw;">
+                    <Box>
+                        <div style="overflow-y: auto; height: 30vw; overflow-x: hidden;">
+                            <div style="display: flex; align-items: start; flex-direction: column;">
+                                <Task tgl={tgl}></Task>
+                                <Task tgl={tgl}></Task>
+                                <Task tgl={tgl}></Task>
+                                <Task tgl={tgl}></Task>
+                                <Task tgl={tgl}></Task>
+                                <Task tgl={tgl}></Task>
+                            </div>
+                        </div>
+                    </Box>
+                </div>
+            </div>
+        </Box>
+    </div>
+</Box>
 
 

@@ -4,7 +4,7 @@
 </script>
 
 <Box>
-	<div style="padding-left: 2vw;">
+	<div style="display: flex; padding-left: 2vw; align-items: center;">
 		<a href="/"><h2>Hacer!</h2></a>
 	</div>
 	<div style="padding-left: 34vw;"></div>
