@@ -5,12 +5,32 @@
 	import FormInput from '$lib/components/core/FormInput.svelte';
 	import img from '$lib/images/form.jpg';
 
-	let uname = '';
-	let passwd = '';
+	let body = {
+		uname: '',
+		passwd: ''
+	}
+
+	let endpoint = "http://127.0.0.1:8888/user/signin";
 
 	// todo data post to api
-	function gass() {
-		console.log(uname);
+	async function gass() {
+		console.log('jag')
+		const res = await fetch(endpoint, {
+			method: 'POST',
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(body)
+		})
+		const data = await res.json() 
+		console.log(data);
+
+		if (res.status === 200) {
+			localStorage.setItem('key', data.key);
+			window.location.href = '/dashboard';
+		} else {
+			window.location.href = '/signin';
+		}
 	}
 </script>
 
@@ -22,8 +42,8 @@
 		<Box>
 			<div style="display: flex; flex-direction: column;">
 				<h1 style="margin-top: 0;">sign in...</h1>
-				<FormInput bind:bind={uname} id="uname" label="username"></FormInput>
-				<FormInput bind:bind={passwd} id="passwd" label="password"></FormInput>
+				<FormInput bind:bind={body.uname} id="uname" label="username"></FormInput>
+				<FormInput bind:bind={body.passwd} id="passwd" label="password"></FormInput>
 				<div style="display: flex; justify-content: end;">
 					<button
 						style="display: flex; border: solid; border-radius: 15px; min-width: 4vw; min-height: 2vw; margin: 0; justify-content: center; align-items: center;"

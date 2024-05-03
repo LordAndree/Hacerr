@@ -4,6 +4,13 @@
 	import Button from '$lib/components/core/Button.svelte';
 
     let tgl = new Date().toDateString();
+
+    // delete key to api
+    function signout() {
+        // console.log("signout")
+        localStorage.removeItem('key');
+        window.location.href = "/";
+    }
 </script>
 
 <Box>
@@ -16,9 +23,14 @@
 <Box>
     <div style="display: flex; flex-direction: row;">
         <Box>
-            <div style="display: flex; flex-direction: column;">
-                <Button width="10vw" href='/dashboard' alias='Home'></Button>
-                <Button width="10vw" href='/#' alias='Profile'></Button>
+            <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; flex-direction: column;">
+                    <Button width="10vw" href='/dashboard' alias='Home'></Button>
+                    <Button width="10vw" href='/#' alias='Profile'></Button>
+                </div>
+                <div style="display: flex; align-self: flex-end;">
+                    <Button alias="sign out" href="/" width="10vw" onclick={signout}></Button>
+                </div>
             </div>
         </Box>
         <Box>
