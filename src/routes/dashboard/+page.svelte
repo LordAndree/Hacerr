@@ -35,6 +35,14 @@ import Nav from '$lib/components/Nav.svelte';
     background-color: black;
     height: 2px;
 }
+.dummyTask{
+	border: solid;
+	border-radius: 12px;
+	margin: 2%;
+	width: 90%;
+	padding: 2%;
+}
+
 </style>
 
 <Nav></Nav>
@@ -50,15 +58,33 @@ import Nav from '$lib/components/Nav.svelte';
 		
 	</div>
 </div> -->
-
-<div style="display: flex; justify-content: center; align-items: center; padding: 2%; margin: 2%;">
-	<div style="display: flex; justify-content: center; border: solid; width: 80%;">
-		<Sidebar></Sidebar>
-		<List>
-			<TaskList {tasks} />
-		</List>
+<body>
+	
+	<div style="display: flex; justify-content: center; align-items: center; padding: 2%; margin: 2%;">
+		<div style="display: flex; justify-content: center;  width: 80%;">
+			<Sidebar></Sidebar>
+			<List>
+				<TaskList {tasks} />
+				<!-- DUMMY TASKLIST UNTUK TESTING UI -->
+				<div class="dummyTask">
+					<h3>Metting dengan Client Google</h3>
+					<hr>
+					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas nihil, odit modi nisi rerum laborum ducimus natus beatae officia qui maiores fugit illum eius pariatur nesciunt voluptas? Libero, optio recusandae.</p>
+				</div>
+				<div class="dummyTask">
+					<h3>Makan Siang</h3>
+					<hr>
+					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas nihil, odit modi nisi rerum laborum ducimus natus beatae officia qui maiores fugit illum eius pariatur nesciunt voluptas? Libero, optio recusandae.</p>
+				</div>
+				<div class="dummyTask">
+					<h3>Mencuci Mobil</h3>
+					<hr>
+					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas nihil, odit modi nisi rerum laborum ducimus natus beatae officia qui maiores fugit illum eius pariatur nesciunt voluptas? Libero, optio recusandae.</p>
+				</div>
+			</List>
+		</div>
 	</div>
-</div>
-
-
+</body>
 <NavTest></NavTest>
+
+
