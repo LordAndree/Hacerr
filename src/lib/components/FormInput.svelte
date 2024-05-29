@@ -1,6 +1,6 @@
 <script lang="ts">
-	export let label;
-	export let id;
+	export let label: string;
+	export let id: string;
 	export let bind: any;
 </script>
 

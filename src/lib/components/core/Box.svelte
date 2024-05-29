@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let minWidth: string | undefined = '0'; 
+	export let minWidth: string | undefined = '0';
 </script>
 
 <div style="display: flex; justify-content: center;">
