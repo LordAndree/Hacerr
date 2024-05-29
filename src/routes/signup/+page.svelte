@@ -4,6 +4,7 @@
 	import FormInput from '$lib/components/FormInput.svelte';
 	import img from '$lib/images/form.jpg';
 	import Container from '$lib/components/core/Container.svelte';
+	import NavTest from '$lib/components/NavTest.svelte';
 
 	let uname = '';
 	let passwd = '';
@@ -64,3 +65,4 @@
     </div>
     
 </Container>
+<NavTest></NavTest>
