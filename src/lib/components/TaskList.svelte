@@ -16,7 +16,8 @@
 				<div style="padding: 10px 0 10px 0;">
 					<Task date={d.date} description={d.description} subject={d.subject}></Task>
 				</div>
-			{/each}
+				{/each}
+				<slot></slot>
+			</div>
 		</div>
-	</div>
 </Box>

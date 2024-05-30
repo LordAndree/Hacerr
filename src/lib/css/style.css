@@ -1,0 +1,8 @@
+.iconimg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 100%; */
+    /* height: mac; */
+    margin-left: 20%;
+}
