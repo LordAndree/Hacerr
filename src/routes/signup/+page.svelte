@@ -2,7 +2,7 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import Box from '$lib/components/core/Box.svelte';
 	import FormInput from '$lib/components/FormInput.svelte';
-	import img from '$lib/images/form.jpg';
+	import img from '$lib/images/Logo Hacer hitam.png';
 	import Container from '$lib/components/core/Container.svelte';
 	import NavTest from '$lib/components/NavTest.svelte';
 
@@ -50,9 +50,9 @@
 					src={img}
 				/>
 				<div style="margin-left: 3vw;"></div>
-				<Box>
+				<Box backgroundColor="#E2E7FA">
 					<div style="display: flex; flex-direction: column;">
-						<h1 style="margin-top: 0;">sign up...</h1>
+						<h1 style="margin-top: 0;">Let me know about you</h1>
 						<FormInput bind:bind={body.name} id="name" label="name"></FormInput>
 						<FormInput bind:bind={body.uname} id="uname" label="username"></FormInput>
 						<FormInput bind:bind={body.passwd} id="passwd" label="password"></FormInput>

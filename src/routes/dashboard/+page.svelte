@@ -44,7 +44,7 @@
 			<SideBar></SideBar>
 			<span style="padding: 0.5vw;"></span>
 			<TaskList {data}>
-				<ButtonAdd href="/addtask" alias="+"></ButtonAdd>
+				<ButtonAdd href="/addtask" alias=""></ButtonAdd>
 			</TaskList>
 		</div>
 	</div>

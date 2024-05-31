@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Box from './core/Box.svelte';
 	import Button from './core/Button.svelte';
-	import titleicon from '$lib/images/ICON TITLE.png';
-	import dateicon from '$lib/images/ICON DATE.png';
-    import descicon from '$lib/images/ICON DESCRIPTION.png';
-    import categoryicon from '$lib/images/ICON CATEGORY.png';
+	import titleicon from '$lib/images/icons8-title-48.png';
+	import dateicon from '$lib/images/icons8-date-48.png';
+    import descicon from '$lib/images/icons8-bullet-list-48.png';
+    import categoryicon from '$lib/images/icons8-category-48.png';
 
 	import '../css/style.css';
 </script>
@@ -16,16 +16,24 @@
 				<h1>Hello sir</h1>
 			</div>
 			<Button alias="Date" href="/addtask" width="10vw">
-				<img class="iconimg" src={dateicon} alt="date icon">
+				<div style="display: flex; align-items: center;">
+					<img class="iconimg" src={dateicon} alt="date icon">
+				</div>
 			</Button>
 			<Button alias="Title" href="/addtitle" width="10vw">
-				<img class="iconimg" src={titleicon} alt="title icon">
+				<div style="display: flex; align-items: center;">
+					<img class="iconimg" src={titleicon} alt="title icon">
+				</div>
 			</Button>
             <Button alias="Description" href="/adddesc" width="10vw">
-				<img class="iconimg" src={descicon} alt="descicon">
+				<div style="display: flex; align-items: center;">
+					<img class="iconimg" src={descicon} alt="descicon">
+				</div>
 			</Button>
 			<Button alias="Category" href="/addcategory" width="10vw">
-				<img class="iconimg" src={categoryicon} alt="categoryicon">
+				<div style="display: flex; align-items: center;">
+					<img class="iconimg" src={categoryicon} alt="categoryicon">
+				</div>
 			</Button>
 		</div>
 		<Button alias="sign out" href="/"></Button>

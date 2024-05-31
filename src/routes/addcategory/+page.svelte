@@ -8,6 +8,7 @@
 	import ButtonAdd from "$lib/components/core/ButtonAdd.svelte";
     import '../../lib/css/style.css';
 	import ButtonNext from "$lib/components/core/ButtonNext.svelte";
+	import ButtonSaveProfile from "$lib/components/core/ButtonSaveProfile.svelte";
 </script>
 
 <Container>
@@ -32,7 +33,7 @@
                                         <label for="1">Urgent</label>
                                     </div>
                                 </BoxAdd>
-                                <ButtonNext href="/dashboard" alias="Save"></ButtonNext>
+                                <ButtonSaveProfile alias="" href="/dashboard"></ButtonSaveProfile>
                         </div>        
                     </div>
                 </Box>
