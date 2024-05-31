@@ -6,6 +6,8 @@
 	import SideBarAdd from "$lib/components/SideBarAdd.svelte";
 	import BoxAdd from "$lib/components/BoxAdd.svelte";
 	import ButtonAdd from "$lib/components/core/ButtonAdd.svelte";
+    import '../../lib/css/style.css';
+	import ButtonNext from "$lib/components/core/ButtonNext.svelte";
 </script>
 
 <Container>
@@ -20,14 +22,17 @@
                             <h1>Create Your New Task</h1>
                         </div>
                         <div style="display: flex; flex-direction: column; overflow-y: scroll; height: 70vh;">
-                                <BoxAdd>
-                                    <h2>Add Date</h2>
+                                <BoxAdd justifyContent="start">
+                                    <h2>Choose Category</h2>
                                     <div style="justify-content: start;">
                                         <hr style="background-color: black; color: black; height: 2px; border-width: 2px;">
-                                        <input type="datetime-local" id="taskdate">
+                                        <input type="radio" id="0" name="taskcategory">
+                                        <label for="0">General</label>
+                                        <input type="radio" id="1" name="taskcategory">
+                                        <label for="1">Urgent</label>
                                     </div>
                                 </BoxAdd>
-                                <!-- <ButtonAdd></ButtonAdd> -->
+                                <ButtonNext href="/dashboard" alias="Save"></ButtonNext>
                         </div>        
                     </div>
                 </Box>

@@ -6,6 +6,7 @@
 	import SideBarAdd from "$lib/components/SideBarAdd.svelte";
 	import BoxAdd from "$lib/components/BoxAdd.svelte";
 	import ButtonAdd from "$lib/components/core/ButtonAdd.svelte";
+    import '../../lib/css/style.css';
 </script>
 
 <Container>
@@ -21,10 +22,10 @@
                         </div>
                         <div style="display: flex; flex-direction: column; overflow-y: scroll; height: 70vh;">
                                 <BoxAdd>
-                                    <h2>Add Date</h2>
+                                    <h2>Add Description</h2>
                                     <div style="justify-content: start;">
                                         <hr style="background-color: black; color: black; height: 2px; border-width: 2px;">
-                                        <input type="datetime-local" id="taskdate">
+                                        <input type="text" id="taskdesc" placeholder="Your Task Description...">
                                     </div>
                                 </BoxAdd>
                                 <!-- <ButtonAdd></ButtonAdd> -->

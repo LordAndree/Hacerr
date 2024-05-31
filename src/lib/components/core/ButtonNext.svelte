@@ -4,15 +4,15 @@
     export let href: string;
 	export let alias: string;
     export let onclick = () => {};
-    export let minHeight: string | undefined = '80%';
 
 </script>
 
 
-<div style="display: flex; justify-content: end; align-items: end; min-height: {minHeight};">
+<div style="display: flex; justify-content: end;">
     <div style="background-color: #E2E7FA;border: solid; border-radius: 80%; padding: 2%; margin: 1%;">
         <a {href} on:click={onclick}>{alias}
             <!-- <img src={addicon} alt="addicon"> -->
+            
         </a>
     </div>
 </div>
