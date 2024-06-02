@@ -11,18 +11,24 @@
 input[type=text]:focus {
     border: 3px solid #555;
     /* height: 100px; */
+    border-radius: 12px;
+    padding-left: 10px;
 }
 
 input[type=text]{
     border: 3px solid #555;
     height: 50px;
     width: 99%;
+    border-radius: 12px;
+    padding-left: 10px;
 }
 
 input[type=password]{
     border: 3px solid #555;
     height: 30px;
     width: 99%;
+    border-radius: 12px;
+    padding-left: 10px;
 }
 
 
@@ -49,3 +55,9 @@ input[type=password]{
     align-items: center;
     justify-content: center;
 }
+
+a{
+    color: black;
+    text-decoration: none;
+}
+

@@ -52,13 +52,13 @@
 					<div style="margin-left: 3vw;"></div>
 					<Box backgroundColor="#E2E7FA">
 						<div style="display: flex; flex-direction: column;">
-							<h1 style="margin-top: 0;">Get ready for the bussyness?</h1>
-							<FormInput bind:bind={body.uname} id="uname" label="username"></FormInput>
-							<FormInput bind:bind={body.passwd} id="passwd" label="password"></FormInput>
+							<h1 style="margin-top: 0;">Get ready for the <br> bussyness?</h1>
+							<FormInput bind:bind={body.uname} id="uname" label="Username"></FormInput>
+							<FormInput bind:bind={body.passwd} id="passwd" label="Password"></FormInput>
 							<div style="display: flex; justify-content: end;">
 								<button
 								style="display: flex; border: solid; border-radius: 15px; min-width: 4vw; min-height: 2vw; margin: 0; justify-content: center; align-items: center;"
-								on:click={gass}>sign in</button
+								on:click={gass}>Sign In</button
 								>
 							</div>
 						</div>
