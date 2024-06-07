@@ -28,14 +28,6 @@
 	}
 
 
-	// import Modal from './Modal.svelte';
-  	// import remove from 'path/to/remove/icon';  // Update path sesuai dengan lokasi file icon Anda
-
-  	let showModal: boolean = false;
-
-	function toggleModal(): void {
-		showModal = !showModal;
-	}
 </script>
 
 <Box minWidth="49vw" backgroundColor="#E2E7FA">
@@ -50,9 +42,6 @@
 			<button class="small-button" on:click={() => navigateTo('/removetask')}>
 				<img class="iconimg" src={remove} alt="removetask">
 			</button>
-			{#if showModal}
-				<Modal on:close={() => showModal = false} />
-			{/if}
 			<button class="small-button" on:click={() => navigateTo('/donetask')}>
 				<img class="iconimg" src={done} alt="donetask">
 			</button>
