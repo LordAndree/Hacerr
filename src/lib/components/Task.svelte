@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Box from './core/Box.svelte';
 	import { goto } from '$app/navigation';
+	import Modal from './core/Modal.svelte';
 
 	export let subject: string;
 	export let date: Date;
@@ -25,6 +26,16 @@
 	function navigateTo(path: string): void {
 		goto(path);
 	}
+
+
+	// import Modal from './Modal.svelte';
+  	// import remove from 'path/to/remove/icon';  // Update path sesuai dengan lokasi file icon Anda
+
+  	let showModal: boolean = false;
+
+	function toggleModal(): void {
+		showModal = !showModal;
+	}
 </script>
 
 <Box minWidth="49vw" backgroundColor="#E2E7FA">
@@ -37,10 +48,13 @@
 				<img class="iconimg" src={edit} alt="edit">
 			</button>
 			<button class="small-button" on:click={() => navigateTo('/removetask')}>
-				<img class="iconimg" src={remove} alt="edit">
+				<img class="iconimg" src={remove} alt="removetask">
 			</button>
+			{#if showModal}
+				<Modal on:close={() => showModal = false} />
+			{/if}
 			<button class="small-button" on:click={() => navigateTo('/donetask')}>
-				<img class="iconimg" src={done} alt="edit">
+				<img class="iconimg" src={done} alt="donetask">
 			</button>
 		</div>
 
