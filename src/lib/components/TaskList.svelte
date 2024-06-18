@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { TaskObj } from '$lib';
+	import type { CheckLists } from '$lib';
 	import Task from './Task.svelte';
 	import Box from './core/Box.svelte';
 
-	export let data: TaskObj[];
+	export let data: CheckLists[];
 </script>
 
 <Box>

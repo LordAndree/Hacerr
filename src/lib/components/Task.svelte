@@ -27,7 +27,8 @@
 		goto(path);
 	}
 
-
+	const newDate = new Date(date)
+	// console.log(newDate.constructor.name)
 </script>
 
 <Box minWidth="49vw" backgroundColor="#E2E7FA">
@@ -49,7 +50,7 @@
 
 		<div style="display: flex; flex-direction: row; justify-content: space-between; width: 90%;">
 			<h4>{subject}</h4>
-			<h4>{date.toISOString()}</h4>
+			<h4>{newDate.toLocaleTimeString()}</h4>
 		</div>
 		<hr style="width: 100%; height: 2px; background-color: black;" />
 		<p>{description}</p>
