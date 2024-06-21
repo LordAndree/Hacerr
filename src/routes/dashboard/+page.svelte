@@ -5,55 +5,38 @@
 	import TaskList from '$lib/components/TaskList.svelte';
 	import ButtonAdd from '$lib/components/core/ButtonAdd.svelte';
 	import Container from '$lib/components/core/Container.svelte';
-	import img from '$lib/images/HOME ICON.png';
 	import { onMount } from 'svelte';
+	import Box from '$lib/components/core/Box.svelte';
+	import Task from '$lib/components/Task.svelte';
 
-	// let data: TaskObj[] = [
-	// 	{
-	// 		date: new Date(),
-	// 		subject: 'anu',
-	// 		description: 'anu'
-	// 	},
-	// 	{
-	// 		date: new Date(),
-	// 		subject: 'anu1',
-	// 		description: 'anu1'
-	// 	},
-	// 	{
-	// 		date: new Date(),
-	// 		subject: 'anu1',
-	// 		description: 'anu1'
-	// 	},
-	// 	{
-	// 		date: new Date(),
-	// 		subject: 'anu1',
-	// 		description: 'anu1'
-	// 	},
-	// 	{
-	// 		date: new Date(),
-	// 		subject: 'anu1',
-	// 		description: 'anu1'
-	// 	}
-	// ];
 
-	let data: any = [];
+	let data: CheckLists[] = [];
 
-	const endPoint = "http://127.0.0.1:8888/checklist"
+	const endPoint = "http://127.0.0.1:8888/checklist";
 
 	onMount(async () => {
-		const key = localStorage.getItem('key');
-		const dataReq = await fetch('http://127.0.0.1:8888/checklist', {
-    		headers: {
-        	'Authorization': `Basic ${key}`
-    	}});
+		try {
+			const key = localStorage.getItem('key');
+			const response = await fetch(endPoint, {
+				headers: {
+					'Authorization': `Bearer ${key}`
+				}
+			});
 
-		data = (await dataReq.json()).data;
-		const date = data.date as Date;
+			if (!response.ok) {
+				throw new Error(`Failed to fetch: ${response.status}`);
+			}
 
-		data.date = date;
-		
-		// console.log(data)
-	})
+			const result = await response.json();
+			data = result.data.map((item: any) => ({
+				...item,
+				date: new Date(item.date) // Konversi string tanggal ke objek Date
+			}));
+		} catch (error) {
+			console.error('Error fetching checklist:', error);
+		}
+	});
+	// export let dataa: CheckLists[];
 </script>
 
 <Container>
@@ -63,9 +46,22 @@
 		<div style="display: flex; flex-direction: row; justify-content: center;">
 			<SideBar></SideBar>
 			<span style="padding: 0.5vw;"></span>
-			<TaskList {data}>
-				<ButtonAdd href="/addtask" alias=""></ButtonAdd>
-			</TaskList>
+			<Box>
+				<div style="display: flex; flex-direction: column;">
+					<div style="display: flex; justify-content: space-between;">
+						<h1>You have todo...</h1>
+						<ButtonAdd href="/addtask" alias=""></ButtonAdd>
+					</div>
+					<div style="display: flex; flex-direction: column; overflow-y: scroll; height: 70vh;">
+						{#each data as d}
+							<div style="padding: 10px 0 10px 0;">
+								<Task id={d.id} date={d.date} description={d.description} subject={d.subject}></Task>
+							</div>
+							{/each}
+						</div>
+					</div>
+			</Box>
+			
 		</div>
 	</div>
 </Container>

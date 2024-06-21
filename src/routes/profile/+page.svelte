@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { TaskObj } from '$lib';
 	import BoxAdd from '$lib/components/BoxAdd.svelte';
 	import Box from '$lib/components/core/Box.svelte';
 	import Nav from '$lib/components/Nav.svelte';
@@ -12,33 +11,7 @@
 	import '../../lib/css/style.css';
 	import ButtonSaveProfile from '$lib/components/core/ButtonSaveProfile.svelte';
 
-	const data: TaskObj[] = [
-		{
-			date: new Date(),
-			subject: 'anu',
-			description: 'anu'
-		},
-		{
-			date: new Date(),
-			subject: 'anu1',
-			description: 'anu1'
-		},
-		{
-			date: new Date(),
-			subject: 'anu1',
-			description: 'anu1'
-		},
-		{
-			date: new Date(),
-			subject: 'anu1',
-			description: 'anu1'
-		},
-		{
-			date: new Date(),
-			subject: 'anu1',
-			description: 'anu1'
-		}
-	];
+
 </script>
 
 <Container>

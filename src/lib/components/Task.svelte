@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import Modal from './core/Modal.svelte';
 
+	export let id: string;
 	export let subject: string;
 	export let date: Date;
 	export let description: string;
@@ -37,7 +38,7 @@
 			<img class="iconimg" src={option} alt="option">
 		</button>
 		<div class="small-buttons-container" bind:this={smallButtonsContainer}>
-			<button class="small-button" on:click={() => navigateTo('/edittask')}>
+			<button class="small-button" on:click={() => navigateTo(`/edittask?id=${id}`)}>
 				<img class="iconimg" src={edit} alt="edit">
 			</button>
 			<button class="small-button" on:click={() => navigateTo('/removetask')}>
