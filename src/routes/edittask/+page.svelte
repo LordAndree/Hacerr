@@ -24,45 +24,45 @@
 		step--;
 	};
 
-	const loadTask = async () => {
-		const key = localStorage.getItem('key');
-		if (!key) {
-			console.error('Authorization key is missing');
-			return;
-		}
+	// const loadTask = async () => {
+	// 	const key = localStorage.getItem('key');
+	// 	if (!key) {
+	// 		console.error('Authorization key is missing');
+	// 		return;
+	// 	}
 
-		taskId = get(page).params.id;
-		console.log('Loaded taskId:', taskId); // Debugging line
+	// 	taskId = get(page).params.id;
+	// 	console.log('Loaded taskId:', taskId); // Debugging line
 
-		if (!taskId) {
-			console.error('Task ID is missing');
-			return;
-		}
+	// 	if (!taskId) {
+	// 		console.error('Task ID is missing');
+	// 		return;
+	// 	}
 
-		try {
-			const response = await fetch(`http://127.0.0.1:8888/checklist/${taskId}`, {
-				headers: {
-					'Authorization': `Bearer ${key}`
-				}
-			});
+	// 	try {
+	// 		const response = await fetch(`http://127.0.0.1:8888/checklist/${taskId}`, {
+	// 			headers: {
+	// 				'Authorization': `Bearer ${key}`
+	// 			}
+	// 		});
 
-			if (!response.ok) {
-				const error = await response.json();
-				console.error('Failed to fetch task', error);
-				return;
-			}
+	// 		if (!response.ok) {
+	// 			const error = await response.json();
+	// 			console.error('Failed to fetch task', error);
+	// 			return;
+	// 		}
 
-			const task = await response.json();
-			dateTime = new Date(task.date).toISOString().substring(0, 16); // For datetime-local input
-			title = task.subject;
-			description = task.description;
-			importance_id = task.importance_id;
-		} catch (error) {
-			console.error('Error fetching task:', error);
-		}
-	};
+	// 		const task = await response.json();
+	// 		dateTime = new Date(task.date).toISOString().substring(0, 16); // For datetime-local input
+	// 		title = task.subject;
+	// 		description = task.description;
+	// 		importance_id = task.importance_id;
+	// 	} catch (error) {
+	// 		console.error('Error fetching task:', error);
+	// 	}
+	// };
 
-	onMount(loadTask);
+	// onMount(loadTask);
 
 	const submitTask = async () => {
 		const key = localStorage.getItem('key');
@@ -71,8 +71,11 @@
 			return;
 		}
 
+		const urlParams = new URLSearchParams(window.location.search);
+		const myParam = urlParams.get('id');
+
 		const taskData = {
-			id: taskId,
+			id: myParam,
 			date: new Date(dateTime).toISOString(),
 			subject: title,
 			description,
@@ -86,7 +89,7 @@
 				method: 'PATCH',
 				headers: {
 					'Content-Type': 'application/json',
-					'Authorization': `Bearer ${key}`
+					'Authorization': `Basic ${key}`
 				},
 				body: JSON.stringify(taskData)
 			});
@@ -99,7 +102,7 @@
 
 			const result = await response.json();
 			console.log('Task edited successfully', result);
-			goto('/success'); // Redirect to a success page or another page
+			goto('/dashboard'); // Redirect to a success page or another page
 		} catch (error) {
 			console.error('Error submitting task', error);
 		}
