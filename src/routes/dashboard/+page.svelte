@@ -9,7 +9,6 @@
 	import Box from '$lib/components/core/Box.svelte';
 	import Task from '$lib/components/Task.svelte';
 
-
 	let data: CheckLists[] = [];
 
 	const endPoint = "http://127.0.0.1:8888/checklist";
@@ -36,7 +35,6 @@
 			console.error('Error fetching checklist:', error);
 		}
 	});
-	// export let dataa: CheckLists[];
 </script>
 
 <Container>
@@ -57,11 +55,10 @@
 							<div style="padding: 10px 0 10px 0;">
 								<Task id={d.id} date={d.date} description={d.description} subject={d.subject}></Task>
 							</div>
-							{/each}
-						</div>
+						{/each}
 					</div>
+				</div>
 			</Box>
-			
 		</div>
 	</div>
 </Container>

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Box from './core/Box.svelte';
 	import { goto } from '$app/navigation';
-	import Modal from './core/Modal.svelte';
 
 	export let id: string;
 	export let subject: string;
@@ -28,8 +27,7 @@
 		goto(path);
 	}
 
-	const newDate = new Date(date)
-	// console.log(newDate.constructor.name)
+	const newDate = new Date(date);
 </script>
 
 <Box minWidth="49vw" backgroundColor="#E2E7FA">
@@ -41,10 +39,10 @@
 			<button class="small-button" on:click={() => navigateTo(`/edittask?id=${id}`)}>
 				<img class="iconimg" src={edit} alt="edit">
 			</button>
-			<button class="small-button" on:click={() => navigateTo('/removetask')}>
+			<button class="small-button" on:click={() => navigateTo(`/removetask?id=${id}`)}>
 				<img class="iconimg" src={remove} alt="removetask">
 			</button>
-			<button class="small-button" on:click={() => navigateTo('/donetask')}>
+			<button class="small-button" on:click={() => navigateTo(`/donetask?id=${id}`)}>
 				<img class="iconimg" src={done} alt="donetask">
 			</button>
 		</div>
