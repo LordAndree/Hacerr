@@ -8,6 +8,8 @@
 	import { onMount } from 'svelte';
 	import Box from '$lib/components/core/Box.svelte';
 	import Task from '$lib/components/Task.svelte';
+	import { checklistStore } from '$lib/stores/checklistStore';
+	import { get } from 'svelte/store';
 
 	let data: CheckLists[] = [];
 
@@ -29,12 +31,23 @@
 			const result = await response.json();
 			data = result.data.map((item: any) => ({
 				...item,
-				date: new Date(item.date) // Konversi string tanggal ke objek Date
+				date: new Date(item.date), // Konversi string tanggal ke objek Date
+				done: item.done || false // Tambahkan properti done
 			}));
+
+			// Set the data to the store
+			checklistStore.set(data);
+
 		} catch (error) {
 			console.error('Error fetching checklist:', error);
 		}
 	});
+
+	const checklistStoreData = get(checklistStore);
+
+	$: {
+		data = checklistStoreData;
+	}
 </script>
 
 <Container>
@@ -53,7 +66,7 @@
 					<div style="display: flex; flex-direction: column; overflow-y: scroll; height: 70vh;">
 						{#each data as d}
 							<div style="padding: 10px 0 10px 0;">
-								<Task id={d.id} date={d.date} description={d.description} subject={d.subject}></Task>
+								<Task id={d.id} date={d.date} description={d.description} subject={d.subject} done={d.done}></Task>
 							</div>
 						{/each}
 					</div>
