@@ -77,7 +77,7 @@
 					<div style="display: flex; flex-direction: column; overflow-y: scroll; height: 70vh;">
 						<BoxAdd>
 							<div style="display: flex; justify-content: space-between;">
-								<h2>Username</h2>
+								<h2>Name</h2>
 								<div style="display: flex; align-items: center; margin-right: 1%;">
 									<img class="iconimg" src={edit} alt="edit" on:click={() => isEditing.name = !isEditing.name}>
 								</div>

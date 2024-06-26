@@ -12,8 +12,13 @@
 	import { get } from 'svelte/store';
 
 	let data: CheckLists[] = [];
+	// export let user = "";
+	let user = { name: 'a', uname: '', passwd: '' };
+
 
 	const endPoint = "http://127.0.0.1:8888/checklist";
+	const endPointUser = "http://127.0.0.1:8888/user/profile";
+
 
 	onMount(async () => {
 		try {
@@ -41,6 +46,25 @@
 		} catch (error) {
 			console.error('Error fetching checklist:', error);
 		}
+
+		try {
+			const key = localStorage.getItem('key');
+			const response = await fetch(endPointUser, {
+				headers: {
+					'Authorization': `Basic ${key}`
+				}
+			});
+
+			if (!response.ok) {
+				throw new Error(`Failed to fetch user data: ${response.status}`);
+			}
+
+			const result = await response.json();
+			user = result.data; // Akses data user dari respons
+
+		} catch (error) {
+			console.error('Error fetching user data:', error);
+		}
 	});
 
 	const checklistStoreData = get(checklistStore);
@@ -55,7 +79,7 @@
 		<Nav></Nav>
 		<span style="padding: 1vh;"></span>
 		<div style="display: flex; flex-direction: row; justify-content: center;">
-			<SideBar></SideBar>
+			<SideBar name={user.name}></SideBar>
 			<span style="padding: 0.5vw;"></span>
 			<Box>
 				<div style="display: flex; flex-direction: column;">

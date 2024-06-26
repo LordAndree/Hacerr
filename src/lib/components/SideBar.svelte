@@ -9,6 +9,8 @@
 	export let active = 'homeButton';
 
 
+	export let name = "";
+
 	
 </script>
 
@@ -16,7 +18,7 @@
 	<div style="display: flex; justify-content: space-between; flex-direction: column;">
 		<div style="display: flex; flex-direction: column;">
 			<div style="display: flex; justify-content: center;">
-				<h1>Hello sir</h1>
+				<h1>Hello {name}</h1>
 			</div>
 			<Button alias="Home" href="/dashboard" width="10vw" backgroundColor={active === 'homeButton' ? '#FEE2BB' : '#D7DFF4'}>
 				<div style="display: flex; align-items: center;">
