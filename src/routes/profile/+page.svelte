@@ -67,7 +67,7 @@
 	<div style="display: flex; flex-direction: column;">
 		<span style="padding: 1vh;"></span>
 		<div style="display: flex; flex-direction: row; justify-content: center;">
-			<SideBar active='profileButton'></SideBar>
+			<SideBar active='profileButton' name={user.name}></SideBar>
 			<span style="padding: 0.5vw;"></span>
 			<Box>
 				<div style="display: flex; flex-direction: column; width: 1000px;">
