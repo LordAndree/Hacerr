@@ -57,6 +57,7 @@
 			const updatedData = get(checklistStore).filter(task => task.id !== id);
 			checklistStore.set(updatedData);
 
+			window.location.reload();
 		} catch (error) {
 			console.error('Error removing task', error);
 		}

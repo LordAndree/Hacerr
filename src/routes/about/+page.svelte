@@ -5,7 +5,7 @@
 	import CardPerson from '$lib/components/core/CardPerson.svelte';
 	import Container from '$lib/components/core/Container.svelte';
 	import lordandreimg from '$lib/images/lord_andre.jpg';
-	import bambangimg from '$lib/images/bambang.jpg';
+	import bambangimg from '$lib/images/bambang2.png';
 	import rastraimg from '$lib/images/rastra.jpg';
 	import mambaulimg from '$lib/images/mambaul.png';
 	import kyimg from '$lib/images/ky.png';

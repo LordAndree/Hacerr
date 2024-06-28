@@ -31,6 +31,6 @@
 				</div>
 			</Button>
 		</div>
-		<Button alias="Sign Out" href="/"></Button>
+		<Button alias="Sign Out" href="/signin"></Button>
 	</div>
 </Box>

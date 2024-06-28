@@ -99,3 +99,9 @@
 		</div>
 	</div>
 </Container>
+
+<style>
+	    :global(body) {
+        background-color: #515173;
+    }
+</style>

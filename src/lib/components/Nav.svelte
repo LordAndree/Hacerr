@@ -5,11 +5,11 @@
 
 <Box minWidth="81%">
 	<div style="display: flex; justify-content: space-between; width: 90%;">
-		<a href="/"><h2>Hacer!</h2></a>
+		<a href="/dashboard"><h2>Hacer!</h2></a>
 		<div style="display: flex; justify-content: center; align-items: center;">
 			<Button href="/about" alias="about"></Button>
 			<Button href="/signin" alias="sign in"></Button>
-			<Button href="/signup" alias="sign up"></Button>
+			<Button href="/" alias="sign up"></Button>
 		</div>
 	</div>
 </Box>
