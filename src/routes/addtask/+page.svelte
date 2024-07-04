@@ -8,14 +8,24 @@
 	import SideBarAdd from "$lib/components/SideBarAdd.svelte";
 	import BoxAdd from "$lib/components/BoxAdd.svelte";
 	import ButtonAdd from "$lib/components/core/ButtonAdd.svelte";
+	import SideBarTest from "$lib/components/SideBarTest.svelte"
+	import titleicon from '$lib/images/icons8-title-48.png';
+	import dateicon from '$lib/images/icons8-date-48.png';
+    import descicon from '$lib/images/icons8-bullet-list-48.png';
+    import categoryicon from '$lib/images/icons8-category-48.png';
+	import Button from '$lib/components/core/Button.svelte';
+	import ButtonAddTask from '$lib/components/core/ButtonAddTask.svelte';
+
+	
 
 	let dateTime: string = '';
 	let title: string = '';
 	let description: string = '';
 	let importance_id: number | null = null; // null means no importance selected
-
 	let step: number = 1;
+	let user = { name: 'a', uname: '', passwd: '' };
 
+	const endPointUser = "http://127.0.0.1:8888/user/profile";
 	const nextStep = () => {
 		step++;
 	};
@@ -23,6 +33,27 @@
 	const prevStep = () => {
 		step--;
 	};
+
+	onMount(async () => {
+		try {
+			const key = localStorage.getItem('key');
+			const response = await fetch(endPointUser, {
+				headers: {
+					'Authorization': `Basic ${key}`
+				}
+			});
+
+			if (!response.ok) {
+				throw new Error(`Failed to fetch user data: ${response.status}`);
+			}
+
+			const result = await response.json();
+			user = result.data; // Akses data user dari respons
+
+		} catch (error) {
+			console.error('Error fetching user data:', error);
+		}
+	})
 
 	const submitTask = async () => {
 		const key = localStorage.getItem('key');
@@ -65,6 +96,15 @@
 	};
 </script>
 
+<style>
+		.icon{
+		display: flex;
+		justify-self: start;
+		height: auto;
+		width: 10px;
+	}
+</style>
+
 {#if step === 1}
 	<!-- Page 1: Input Date and Time -->
 	<div>
@@ -76,7 +116,34 @@
 			<div style="display: flex; flex-direction: column;">
 				<span style="padding: 1vh;"></span>
 				<div style="display: flex; flex-direction: row; justify-content: center;">
-					<SideBarAdd></SideBarAdd>
+					<!-- <SideBarAdd></SideBarAdd> -->
+					 <SideBarTest name={user.name}>
+						<Button alias="Date" href="/addtask" width="10vw">
+							<div style="display: flex; align-items: center;">
+								<img class="iconimg" src={dateicon} alt="date icon">
+							</div>
+						</Button>
+						<button style="border: none; background-color: transparent;" on:click={nextStep}>
+							<div style="display: flex; justify-content: center; border: solid; border-radius: 15px; margin: 3%;  background-color: #D7DFF4;">
+								<div class="icon">
+									<slot></slot>
+								</div>
+								<div style="display: flex; min-width: 5vw; min-height: 2vw; margin: 0.2vw; justify-content: center; align-items: center; width: 5vw;">
+									<!-- <a href="{href}">{alias}</a> -->
+								</div>
+							</div>
+						</button>
+						<Button alias="Description" href="/addtask#desc" width="10vw">
+							<div style="display: flex; align-items: center;">
+								<img class="iconimg" src={descicon} alt="descicon">
+							</div>
+						</Button>
+						<Button alias="Category" href="/addcategory" width="10vw">
+							<div style="display: flex; align-items: center;">
+								<img class="iconimg" src={categoryicon} alt="categoryicon">
+							</div>
+						</Button>
+					 </SideBarTest>
 					<span style="padding: 0.5vw;">
 						<Box>
 							<div style="display: flex; flex-direction: column; width: 1000px;">
@@ -116,7 +183,29 @@
 		<div style="display: flex; flex-direction: column;">
 			<span style="padding: 1vh;"></span>
 			<div style="display: flex; flex-direction: row; justify-content: center;">
-				<SideBarAdd></SideBarAdd>
+				<!-- <SideBarAdd></SideBarAdd> -->
+				<SideBarTest name={user.name}>
+					<Button alias="Date" href="/addtask" width="10vw">
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={dateicon} alt="date icon">
+						</div>
+					</Button>
+					<Button alias="Title" href="/addtitle" width="10vw">
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={titleicon} alt="title icon">
+						</div>
+					</Button>
+					<Button on:click={nextStep} alias="Description" href="/adddesc" width="10vw">
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={descicon} alt="descicon">
+						</div>
+					</Button>
+					<Button alias="Category" href="/addcategory" width="10vw">
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={categoryicon} alt="categoryicon">
+						</div>
+					</Button>
+				 </SideBarTest>
 				<span style="padding: 0.5vw;">
 					<Box>
 						<div style="display: flex; flex-direction: column; width: 1000px;">
@@ -158,7 +247,29 @@
 		<div style="display: flex; flex-direction: column;">
 			<span style="padding: 1vh;"></span>
 			<div style="display: flex; flex-direction: row; justify-content: center;">
-				<SideBarAdd></SideBarAdd>
+				<!-- <SideBarAdd></SideBarAdd> -->
+				<SideBarTest name={user.name}>
+					<Button alias="Date" href="/addtask" width="10vw">
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={dateicon} alt="date icon">
+						</div>
+					</Button>
+					<Button alias="Title" href="/addtitle" width="10vw">
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={titleicon} alt="title icon">
+						</div>
+					</Button>
+					<Button alias="Description" href="/adddesc" width="10vw">
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={descicon} alt="descicon">
+						</div>
+					</Button>
+					<Button on:click={nextStep} alias="Category" href="/addcategory" width="10vw">
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={categoryicon} alt="categoryicon">
+						</div>
+					</Button>
+				 </SideBarTest>
 				<span style="padding: 0.5vw;">
 					<Box>
 						<div style="display: flex; flex-direction: column; width: 1000px;">
@@ -207,7 +318,29 @@
 		<div style="display: flex; flex-direction: column;">
 			<span style="padding: 1vh;"></span>
 			<div style="display: flex; flex-direction: row; justify-content: center;">
-				<SideBarAdd></SideBarAdd>
+				<!-- <SideBarAdd></SideBarAdd> -->
+				<SideBarTest name={user.name}>
+					<Button alias="Date" href="/addtask" width="10vw">
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={dateicon} alt="date icon">
+						</div>
+					</Button>
+					<Button alias="Title" href="/addtitle" width="10vw">
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={titleicon} alt="title icon">
+						</div>
+					</Button>
+					<Button alias="Description" href="/adddesc" width="10vw">
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={descicon} alt="descicon">
+						</div>
+					</Button>
+					<Button alias="Category" href="/addcategory" width="10vw">
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={categoryicon} alt="categoryicon">
+						</div>
+					</Button>
+				 </SideBarTest>
 				<span style="padding: 0.5vw;">
 					<Box>
 						<div style="display: flex; flex-direction: column; width: 1000px;">

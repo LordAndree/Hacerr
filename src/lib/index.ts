@@ -3,6 +3,12 @@ export type CheckLists = {
     subject: string;
     description: string;
     date: Date;
+    importanceId: Importances;
+};
+
+export type Importances = {
+    id: number;
+    desc?: string;
 };
 
 

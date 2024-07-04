@@ -14,7 +14,7 @@
 	const teamMembers = [
 	  { role: 'Product Owner', name: 'Dimas Pramudya Nagara', id: '21.11.4040', image: bambangimg, alt: 'Bambang' },
 	  { role: 'Scrum Master', name: 'Rizki Gunawan', id: '21.11.4074', image: kyimg, alt: 'Ky' },
-	  { role: 'Developer Team', name: 'Mambaul Hisyam', id: '21.11.4107', image: mambaulimg, alt: 'Mambaul' },
+	  { role: 'Developer Team', name: 'Mambaul Hisam', id: '21.11.4107', image: mambaulimg, alt: 'Mambaul' },
 	  { role: 'Developer Team', name: 'Andreas Adrian', id: '21.11.4075', image: lordandreimg, alt: 'Lord_Andre' },
 	  { role: 'Developer Team', name: 'Rastra Ardiansyah Pora', id: '21.11.4077', image: rastraimg, alt: 'Rastra' }
 	];

@@ -1,10 +1,10 @@
 <script lang="ts">
-	export let href: string | undefined = '';
+	// export let href: string | undefined = '';
 	export let alias: string;
 	export let width = '5vw';
 	export let backgroundColor: string | undefined = '#D7DFF4';
 	export let id: string = '';
-	export let onclick = () => {};
+	let onclick = () => {};
 </script>
 
 <style>
@@ -16,17 +16,13 @@
 	}
 </style>
 
-<a href="{href}">
 <button style="border: none; background-color: transparent;" on:click={onclick}>
 	<div id={id} style="display: flex; justify-content: center; border: solid; border-radius: 15px; margin: 3%;  background-color: {backgroundColor};">
 		<div class="icon">
 			<slot></slot>
 		</div>
-		<!-- <a href={href}> -->
 		<div style="display: flex; min-width: 5vw; min-height: 2vw; margin: 0.2vw; justify-content: center; align-items: center; width: {width};">
-			<!-- <a href="{href}">{alias}</a> --> {alias}
+			<!-- <a href="{href}">{alias}</a> -->
 		</div>
-		<!-- </a> -->
 	</div>
 </button>
-</a>

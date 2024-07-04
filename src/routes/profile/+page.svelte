@@ -8,6 +8,15 @@
 	import edit from '$lib/images/icons8-edit-48.png';
 	import ButtonSaveProfile from '$lib/components/core/ButtonSaveProfile.svelte';
 	import { onMount } from 'svelte';
+	import SideBarTest from '$lib/components/SideBarTest.svelte';
+	import homeicon from '$lib/images/icons8-home-48.png';
+	import profileicon from '$lib/images/icons8-user-48.png';
+	import Button from '$lib/components/core/Button.svelte';
+
+
+	import '../../lib/css/style.css';
+
+	export let active = 'profileButton';
 
 	let user = { name: '', uname: '', passwd: '' };
 	let isEditing = { name: false, passwd: false };
@@ -67,7 +76,21 @@
 	<div style="display: flex; flex-direction: column;">
 		<span style="padding: 1vh;"></span>
 		<div style="display: flex; flex-direction: row; justify-content: center;">
-			<SideBar active='profileButton' name={user.name}></SideBar>
+			<!-- <SideBar active='profileButton' name={user.name}></SideBar> -->
+			 <SideBarTest name={user.name} active='profileButton'>
+				<div style="display: flex; align-content: center; flex-direction: column;">
+					<Button alias="Home" href="/dashboard" width="10vw" backgroundColor={active === 'homeButton' ? '#FEE2BB' : '#D7DFF4'}>
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={homeicon} alt="homeicon">
+						</div>
+					</Button>
+					<Button alias="Profile" href="/profile" width="10vw" backgroundColor={active === 'profileButton' ? '#FEE2BB' : '#D7DFF4'}>
+						<div style="display: flex; align-items: center;">
+							<img class="iconimg" src={profileicon} alt="profileicon">
+						</div>
+					</Button>
+				</div>
+			 </SideBarTest>
 			<span style="padding: 0.5vw;"></span>
 			<Box>
 				<div style="display: flex; flex-direction: column; width: 1000px;">
